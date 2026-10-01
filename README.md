@@ -1,4 +1,4 @@
-Absolutely. Here is the **complete GitHub-ready README** for your **FoodMitra** project, updated to use **`openai/gpt-oss-120b` through Groq API** and keeping your actual keyword-based retrieval approach.
+
 
 # 🍽️ FoodMitra – AI Restaurant Recommendation Assistant
 
