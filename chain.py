@@ -1,6 +1,4 @@
-# -----------------------------
-# IMPORTS
-# -----------------------------
+
 import os
 from dotenv import load_dotenv
 
@@ -14,9 +12,6 @@ from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 
 
-# -----------------------------
-# API KEYS
-# -----------------------------
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 
@@ -25,9 +20,7 @@ os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = "AI_Restaurant_Planner"
 
 
-# -----------------------------
-# SIMPLE IN-MEMORY KNOWLEDGE BASE
-# -----------------------------
+
 docs = [
     Document(
         page_content="""
@@ -109,9 +102,6 @@ docs = [
 ]
 
 
-# -----------------------------
-# MEMORY
-# -----------------------------
 chat_memories = {}
 
 
@@ -123,9 +113,7 @@ def get_memory(chat_id):
     return chat_memories[chat_id]
 
 
-# -----------------------------
-# LLM
-# -----------------------------
+
 def get_llm(temp=0.7):
 
     if not GROQ_API_KEY:
@@ -138,9 +126,7 @@ def get_llm(temp=0.7):
 )
 
 
-# -----------------------------
-# SIMPLE RETRIEVAL
-# -----------------------------
+
 def retrieve_docs(query):
 
     results = []
@@ -157,9 +143,6 @@ def retrieve_docs(query):
     return results[:4]
 
 
-# -----------------------------
-# BUILD CONTEXT
-# -----------------------------
 def build_context(docs):
 
     return "\n\n".join(
@@ -167,9 +150,7 @@ def build_context(docs):
     )
 
 
-# -----------------------------
-# QUERY REWRITE
-# -----------------------------
+
 def rewrite_query(question):
 
     prompt = ChatPromptTemplate.from_template("""
@@ -196,9 +177,6 @@ Query:
     })
 
 
-# -----------------------------
-# EXTRACT RESTAURANTS
-# -----------------------------
 def extract_restaurants(text):
 
     prompt = ChatPromptTemplate.from_template("""
@@ -229,9 +207,6 @@ Text:
     ]
 
 
-# -----------------------------
-# GENERATE RESPONSE
-# -----------------------------
 def generate_response(question, memory):
 
     refined = rewrite_query(question)
