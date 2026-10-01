@@ -9,9 +9,6 @@ st.set_page_config(
 )
 
 
-# -----------------------------
-# PREMIUM CSS
-# -----------------------------
 st.markdown("""
 <style>
 
@@ -167,10 +164,6 @@ if "chats" not in st.session_state:
         "Restaurant Chat 1"
     )
 
-
-# -----------------------------
-# MAP
-# -----------------------------
 def show_map(restaurant):
 
     url = (
@@ -194,10 +187,6 @@ def show_map(restaurant):
         unsafe_allow_html=True
     )
 
-
-# -----------------------------
-# SIDEBAR
-# -----------------------------
 with st.sidebar:
 
     st.title("🍽️ FoodMitra")
@@ -293,9 +282,6 @@ with st.sidebar:
         )
 
 
-# -----------------------------
-# HEADER
-# -----------------------------
 st.markdown(
     "<div class='header'>FoodMitra</div>",
     unsafe_allow_html=True
@@ -313,10 +299,6 @@ st.success(
     "🧠 LangSmith Tracing Enabled"
 )
 
-
-# -----------------------------
-# CHAT HISTORY
-# -----------------------------
 chat_history = st.session_state.chats[
     st.session_state.current_chat
 ]
@@ -343,9 +325,7 @@ for msg in chat_history:
         )
 
 
-# -----------------------------
-# INPUT
-# -----------------------------
+
 user_input = st.chat_input(
     "Ask about restaurants..."
 )
@@ -406,9 +386,7 @@ if user_input:
         )
 
 
-    # -----------------------------
-    # RESPONSE
-    # -----------------------------
+
     st.markdown(
         f"<div class='glass'>"
         f"🤖 {response}"
@@ -417,9 +395,7 @@ if user_input:
     )
 
 
-    # -----------------------------
-    # SUMMARY
-    # -----------------------------
+
     st.markdown(
         f"""
         <div class='summary'>
@@ -436,9 +412,6 @@ if user_input:
     )
 
 
-    # -----------------------------
-    # RESTAURANT LOCATIONS
-    # -----------------------------
     if restaurants:
 
         st.markdown(
@@ -458,9 +431,6 @@ if user_input:
                 show_map(restaurant)
 
 
-    # -----------------------------
-    # SAVE RESPONSE
-    # -----------------------------
     chat_history.append({
         "role": "assistant",
         "content": response
